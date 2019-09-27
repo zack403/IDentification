@@ -5,10 +5,9 @@
 
 // module.exports = sequelize;
 const { Pool } = require('pg');
-const config = require('config');
 const winston = require('winston');
 
-const connectionString = "postgres://tmeeffqcywitbt:4e61610ea33197f5a9c16c0eb88de56587cf5702b08efdb9cd20ac067038473f@ec2-54-83-201-84.compute-1.amazonaws.com:5432/ddtt5t7uipoa85";
+const connectionString = process.env.db;
 
 const pool = new Pool({
     connectionString: connectionString

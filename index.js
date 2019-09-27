@@ -1,9 +1,8 @@
+require("dotenv").config();
 const winston = require("winston");
 require('express-async-errors');
 const express = require("express");
-const config = require("config");
 const app = express();
-require("./config/cloudinaryConfig");
 const morgan = require('morgan');
 const db = require('./startup/db');
 const {userTable} = require('./models/user');
@@ -30,10 +29,9 @@ app.use(express.static('public'));
 
 require("./startup/cors")(app);
 require("./startup/routes")(app);
-//require("./startup/config")();
 require("./startup/production")(app);
 
-const port = process.env.PORT || config.get("port");
+const port = process.env.PORT || 3000;
 const server = app.listen(port, () =>
    winston.info(`Listening on port ${port}...`)
 );
