@@ -13,13 +13,13 @@ router.post('/', upload.single('image'), async (req, res) => {
     let {description} = req.body;
     description = description.toLowerCase();
     if(req.file){
-        const result = await imageUpload(req.file.path);
-        if(result) {
-          imageUrl = result.url;
-        }
-        else {
-            return res.status(500).send("Error while trying to process your request, try again...");
-        }
+            const result = await imageUpload(req.file.path);
+            if(result) {
+                imageUrl = result.url;
+            }
+            else {
+                return res.status(500).send("Error while trying to process your request, try again...");
+            }         
     }
     const {rows: created} = await User.save(description, imageUrl);
     if ( created[0] ) {

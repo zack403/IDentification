@@ -1,4 +1,5 @@
 require("dotenv").config();
+require("./config/cloudinaryConfig");
 const winston = require("winston");
 require('express-async-errors');
 const express = require("express");
