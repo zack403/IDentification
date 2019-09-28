@@ -6,7 +6,7 @@ const userTable = async () => {
   CREATE TABLE IF NOT EXISTS
    users(
      id SERIAL NOT NULL,
-     description VARCHAR(128) NOT NULL,
+     description VARCHAR(300) NOT NULL,
      image VARCHAR,
      created_at TIMESTAMP NOT NULL DEFAULT NOW(),
      PRIMARY KEY (id)
@@ -34,9 +34,9 @@ const userMethods =  {
   save: async (description, image, 
         ) => {
       const text = `INSERT INTO
-      users(description,image)
+      users(description, image)
       VALUES($1, $2)
-      returning id, description, image`;
+      returning *`;
       const values = [
         description,
         image
